@@ -9,11 +9,13 @@ After downloading
 using Terminal;
 
 using var shell = Shell.Create("Shelly");
-await shell.RunAsync(); // Or you can use Run method to run shell synchronously
+await shell.RunAsync(); // Or you can use Shell.Run() method to run shell synchronously
 ```
 
-Shell.Create method will take all commands contexts from current assembly, so these contexts must be public.
-If you need to initialize shell with the exact contexts you should use Shell.UseBuilder method instead.
+Shell.Create() method will take all commands contexts from current assembly, so these contexts must be public.
+If you need to initialize shell with the exact contexts you should use Shell.UseBuilder() method instead.
+Then you can add any amount of contexts by using ShellBuilder.AddCommandsContext<>() method.
+And finally you have to initialize shell with ShellBuilder.BuildShell() method.
 
 ```C#
 using var shell = Shell.UseBuilder()
@@ -47,6 +49,9 @@ public class Commands : CommandsContext
         var numbers = paramsCollection.GetArray<int>("n"); // Arrays are only available in the end of any parameter
         return Math.Round(numbers!.Aggregate((acc, cur) => acc + cur).Cast<double>() / numbers!.Length, 3);
     }
+    
+    // If command method returns any value it will be displayed in your console.
+    // As it uses Object.ToString() method you can return any custom object from command method overriding ToString() method
 }
 ```
 
@@ -57,3 +62,6 @@ ParamAliases attributes are just the same as Aliases attribute so you can set a 
 
 Every command which has at least one parameter must take a ParamsCollection object.
 In the command methods you can get any parameter by using ParamsCollection.Get<>() method but if you have an array in the param types sequence you have to use ParamsCollection.GetArray<>() method instead.
+
+Also you can observe current command's data as name, aliases and etc.
+You can do this in command methods by using CommandsContext.Command property.
