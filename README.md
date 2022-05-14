@@ -46,7 +46,7 @@ public class Commands : CommandsContext
     [ParamDescription("Numbers", "Array of integer numbers")]
     public double Average(ParamsCollection paramsCollection)
     {
-        var numbers = paramsCollection.GetArray<int>("n"); // Arrays are only available in the end of any parameter
+        var numbers = paramsCollection.GetArray<int>("n"); // Arrays are only available in the end of any parameter types
         return Math.Round(numbers!.Aggregate((acc, cur) => acc + cur).Cast<double>() / numbers!.Length, 3);
     }
     
