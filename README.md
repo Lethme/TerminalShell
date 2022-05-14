@@ -65,3 +65,5 @@ In the command methods you can get any parameter by using ParamsCollection.Get<>
 
 Also you can observe current command's data as name, aliases and etc.
 You can do this in command methods by using CommandsContext.Command property.
+
+If you need any custom output you can set void as command method's return type and then use CommandsContext.Log() or CommandsContext.LogLine() methods.
