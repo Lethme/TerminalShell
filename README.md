@@ -3,7 +3,7 @@ Simple in use cmd-like console app interface library
 
 How to use:
 
-After downloading
+After instaliing
 
 ```C#
 using Terminal;
