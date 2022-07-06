@@ -42,7 +42,7 @@ public abstract class ShellBase : IDisposable
     protected private IEnumerable<CommandInfo> Commands => Contexts.GetCommands();
     internal string CommandMarker { get; }
     internal string ParamsMarker { get; }
-    internal string Name { get; set; }
+    public string Name { get; set; }
     private Task RunTask { get; }
     private CancellationTokenSource RunTaskTokenSource { get; }
 
@@ -303,53 +303,62 @@ public abstract class ShellBase : IDisposable
                 $"Parameters count mismatch"
             );
         }
-        else
+
+        if (paramsDictionary.Any(p =>
+                p.Key != DefaultParamName &&
+                !cmd.Params.Any(cmdParam =>
+                    String.Equals(cmdParam.Name, p.Key, StringComparison.CurrentCultureIgnoreCase) ||
+                    cmdParam.Aliases.Any(alias => String.Equals(alias, p.Key, StringComparison.CurrentCultureIgnoreCase)))))
         {
-            var requiredParams = cmd.GetRequiredParams();
+            throw new CommandValidatingException(
+                $"Unknown command parameters"
+            );
+        }
+            
+        var requiredParams = cmd.GetRequiredParams();
 
-            var actualRequiredParams = paramsDictionary
-                .Keys
-                .Where(key =>
-                    requiredParams.Any(requiredKey => requiredKey.Is(key))
-                );
+        var actualRequiredParams = paramsDictionary
+            .Keys
+            .Where(key =>
+                requiredParams.Any(requiredKey => requiredKey.Is(key))
+            );
 
-            var requiredParamsCount = requiredParams.Count();
-            var actualRequiredParamsCount = actualRequiredParams.Count();
+        var requiredParamsCount = requiredParams.Count();
+        var actualRequiredParamsCount = actualRequiredParams.Count();
 
+        if (
+            requiredParamsCount != actualRequiredParamsCount &&
+            !paramsDictionary.ContainsKey(DefaultParamName)
+        )
+        {
+            throw new CommandValidatingException(
+                $"Required parameters count mismatch"
+            );   
+        }
+
+        if (
+            paramsDictionary.ContainsKey(DefaultParamName)
+        )
+        {
             if (
-                requiredParamsCount != actualRequiredParamsCount &&
-                !paramsDictionary.ContainsKey(DefaultParamName)
+                (requiredParamsCount == 0 && cmd.Params.Count() > 1) ||
+                requiredParamsCount > 1
             )
-            {
                 throw new CommandValidatingException(
-                    $"Required parameters count mismatch"
-                );   
-            }
-
-            if (
-                paramsDictionary.ContainsKey(DefaultParamName)
-            )
-            {
-                if (
-                    (requiredParamsCount == 0 && cmd.Params.Count() > 1) ||
-                    requiredParamsCount > 1
-                )
-                    throw new CommandValidatingException(
-                        $"You can only use default parameter if you have only one required parameter or only one parameter at all."
-                    );
+                    $"You can only use default parameter if you have only one required parameter or only one parameter at all."
+                );
                 
-                if (cmd.Params.Count() == 1)
-                {
-                    var tempParams = paramsDictionary[DefaultParamName];
-                    paramsDictionary.Remove(DefaultParamName);
-                    paramsDictionary.Add(cmd.Params.First().Name, tempParams);
-                }
-                else if (requiredParamsCount == 1)
-                {
-                    var tempParams = paramsDictionary[DefaultParamName];
-                    paramsDictionary.Remove(DefaultParamName);
-                    paramsDictionary.Add(requiredParams.First().Name, tempParams);
-                }
+            if (cmd.Params.Count() == 1)
+            {
+                var tempParams = paramsDictionary[DefaultParamName];
+                paramsDictionary.Remove(DefaultParamName);
+                paramsDictionary.Add(cmd.Params.First().Name, tempParams);
+            }
+            else if (requiredParamsCount == 1)
+            {
+                var tempParams = paramsDictionary[DefaultParamName];
+                paramsDictionary.Remove(DefaultParamName);
+                paramsDictionary.Add(requiredParams.First().Name, tempParams);
             }
         }
 
