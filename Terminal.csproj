@@ -5,12 +5,12 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <RootNamespace>Shell</RootNamespace>
-        <PackageVersion>2.0.2</PackageVersion>
+        <PackageVersion>2.0.3</PackageVersion>
         <Title>Shell</Title>
         <Authors>Ashe</Authors>
         <Description>Simple in use cmd-like console app interface library</Description>
-        <AssemblyVersion>2.0.2.0</AssemblyVersion>
-        <FileVersion>2.0.2.0</FileVersion>
+        <AssemblyVersion>2.0.3.1</AssemblyVersion>
+        <FileVersion>2.0.3.1</FileVersion>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <PackageId>TerminalShell</PackageId>
         <PackageLicenseUrl>https://www.gnu.org/licenses/gpl-3.0.html</PackageLicenseUrl>

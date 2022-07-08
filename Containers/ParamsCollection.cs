@@ -149,8 +149,8 @@ public class ParamsCollection : IEnumerable<ParamContainer>, IDisposable
     {
         return Params
             .FirstOrDefault(p =>
-                p.Name == paramName ||
-                p.Aliases.Any(alias => alias == paramName)
+                String.Equals(p.Name, paramName, StringComparison.CurrentCultureIgnoreCase) ||
+                p.Aliases.Any(alias => String.Equals(alias, paramName, StringComparison.CurrentCultureIgnoreCase))
             ) != default;
     }
 
@@ -158,8 +158,8 @@ public class ParamsCollection : IEnumerable<ParamContainer>, IDisposable
     {
         var param = Params
             .FirstOrDefault(p => 
-                p.Name.ToLower() == paramName.ToLower() ||
-                p.Aliases.Any(alias => alias.ToLower() == paramName.ToLower())
+                String.Equals(p.Name, paramName, StringComparison.CurrentCultureIgnoreCase) ||
+                p.Aliases.Any(alias => String.Equals(alias, paramName, StringComparison.CurrentCultureIgnoreCase))
             );
 
         if (param == default)
