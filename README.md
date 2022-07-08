@@ -21,9 +21,11 @@ using var shell = Terminal.Shell.UseBuilder()
     .AddCommandsContext<AnotherCommands>()
     .BuildShell("Shelly");
 await shell.RunAsync();
+```
 
 **Remember that this does the same thing as Terminal.Shell.Create() method!**
 
+```C#
 using var shell = Terminal.Shell.UseBuilder()
     .BuildShell("Shelly");
 await shell.RunAsync();
