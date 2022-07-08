@@ -65,7 +65,7 @@ Shelly> average --values 1 2 3
 Or
 Shelly> average 1 2 3
 
-Here you can use 'avg' as command name and 'vals' or 'v' as parameter's name
+Here you can use 'avg' as command name instead of 'average' and 'vals' or 'v' as parameter's name instead of 'values'
 ```
 
 If your command have only one required parameter or only one parameter at all, it's not necessary to specify param name.
