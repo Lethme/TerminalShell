@@ -40,14 +40,16 @@ public class Commands : CommandsContext
 {
     [Command("Average")]
     [Aliases("Avg")]
-    [Description("Calc an average of any amount of integer numbers")]
-    [Param("Numbers", true, typeof(int[]))]
-    [ParamAliases("Numbers", "Nums", "N")]
-    [ParamDescription("Numbers", "Array of integer numbers")]
+    [Description("Calculates the average of any amount of values")]
+    [Param("Values", true, typeof(double[]))]
+    [ParamAliases("Values", "Vals", "V")]
+    [ParamDescription("Values", "Any amount of values")]
     public double Average(ParamsCollection paramsCollection)
     {
-        var numbers = paramsCollection.GetArray<int>("n"); // Arrays are only available in the end of any parameter types
-        return Math.Round(numbers!.Aggregate((acc, cur) => acc + cur).Cast<double>() / numbers!.Length, 3);
+        var values = paramsCollection.GetArray<double>("V"); // Arrays are only available in the end of any parameter types and only once!
+        return values.Aggregate((acc, next) => acc + next) / values.Length;
+        
+        // If you want to get any other parameter value use ParamsCollection.Get<>() method.
     }
     
     // If command method returns any value it will be displayed in your console.
