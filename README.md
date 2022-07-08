@@ -61,9 +61,11 @@ public class Commands : CommandsContext
 After running shell you can invoke your command like this:
 
 ```
-Shelly> average --values 1 2 3 //Here you can use 'avg' as command name and 'vals' or 'v' as parameter's name
-//Or
+Shelly> average --values 1 2 3
+Or
 Shelly> average 1 2 3
+
+Here you can use 'avg' as command name and 'vals' or 'v' as parameter's name
 ```
 
 If your command have only one required parameter or only one parameter at all, it's not necessary to specify param name.
