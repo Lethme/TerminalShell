@@ -57,10 +57,21 @@ public class Commands : CommandsContext
 }
 ```
 
+After running shell you can invoke your command like this:
+
+```
+Shelly> average --values 1 2 3
+//Or
+Shelly> average 1 2 3
+```
+
+If your command have only one required parameter or only one parameter at all, it's not necessary to specify param name.
+
 Command attribute just tells shell what name current command will have.
 With Aliases attribute you can set a short versions of any command.
 Param attributes are used to tell shell what parameters current command can use.
 ParamAliases attributes are just the same as Aliases attribute so you can set a short versions of parameters names.
+Description attributes are describing your command.
 
 Every command which has at least one parameter must take a ParamsCollection object.
 In the command methods you can get any parameter by using ParamsCollection.Get<>() method but if you have an array in the param types sequence you have to use ParamsCollection.GetArray<>() method instead.
