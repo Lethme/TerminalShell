@@ -6,9 +6,7 @@ How to use:
 After instaliing
 
 ```C#
-using Terminal;
-
-using var shell = Shell.Create("Shelly");
+using var shell = Terminal.Shell.Create("Shelly");
 await shell.RunAsync(); // Or you can use Shell.Run() method to run shell synchronously
 ```
 
@@ -18,9 +16,15 @@ Then you can add any amount of contexts by using ShellBuilder.AddCommandsContext
 And finally you have to initialize shell with ShellBuilder.BuildShell() method.
 
 ```C#
-using var shell = Shell.UseBuilder()
+using var shell = Terminal.Shell.UseBuilder()
     .AddCommandsContext<Commands>()
     .AddCommandsContext<AnotherCommands>()
+    .BuildShell("Shelly");
+await shell.RunAsync();
+
+**Remember that this does the same thing as Terminal.Shell.Create() method!**
+
+using var shell = Terminal.Shell.UseBuilder()
     .BuildShell("Shelly");
 await shell.RunAsync();
 ```
@@ -67,6 +71,8 @@ Shelly> average 1 2 3
 
 Here you can use 'avg' as command name instead of 'average' and 'vals' or 'v' as parameter's name instead of 'values'
 ```
+
+**Remember that shell is not case sensitive!**
 
 If your command have only one required parameter or only one parameter at all, it's not necessary to specify param name.
 
