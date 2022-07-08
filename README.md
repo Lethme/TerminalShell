@@ -28,13 +28,14 @@ await shell.RunAsync();
 Commands context is just a public class which must be inherited from CommandsContext class.
 Then you can just create any commands inside of the context like this:
 
+For example, this command requires a set of double values and calculates the average value of specified set:
+
 ```C#
 using Terminal.Attributes;
 using Terminal.Commands;
 using Terminal.Containers;
-using Terminal.Extensions;
 
-namespace ShellTest;
+namespace ShellExample;
 
 public class Commands : CommandsContext
 {
@@ -60,7 +61,7 @@ public class Commands : CommandsContext
 After running shell you can invoke your command like this:
 
 ```
-Shelly> average --values 1 2 3
+Shelly> average --values 1 2 3 //Here you can use 'avg' as command name and 'vals' or 'v' as parameter's name
 //Or
 Shelly> average 1 2 3
 ```
