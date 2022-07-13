@@ -384,16 +384,19 @@ public abstract class ShellBase : IDisposable
             var paramValuesTypes = currentParam.ParamsTypes.ToArray();
             var paramValues = param.Value.ToArray();
             var paramsArrayHash = ShellArrays.Create(Name);
+            Type arrayElementsType = null;
             for (int i = 0, len = paramValues.Length; i < len; i++)
             {
                 if (i > paramValuesTypes.Length - 1 || (i < paramValuesTypes.Length && paramValuesTypes[i].IsShellArray()))
                 {
-                    if (!paramValues[i].TryCast(ShellArrays.GetElementType(paramsArrayHash)!).Success)
+                    arrayElementsType ??= paramValuesTypes[i].GetElementType()!;
+                    
+                    if (!paramValues[i].TryCast(arrayElementsType).Success)
                         throw new CommandValidatingException(
-                            $"Value type mismatch: \"{paramValues[i]}\" is not {ShellArrays.GetElementType(paramsArrayHash)}"
+                            $"Value type mismatch: \"{paramValues[i]}\" is not {arrayElementsType.Name}"
                         );
 
-                    ShellArrays.Append(paramsArrayHash, paramValues[i].Cast(ShellArrays.GetElementType(paramsArrayHash)!));
+                    ShellArrays.Append(paramsArrayHash, paramValues[i].Cast(arrayElementsType));
 
                     if (i == len - 1)
                         castedParamsDictionary[currentParam.Name].Values.AddLast(ShellArrays.Get(paramsArrayHash)!);
