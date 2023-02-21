@@ -3,12 +3,15 @@ using System.Reflection;
 using Terminal.Attributes;
 using Terminal.Exceptions;
 using Terminal.Extensions;
+using Terminal.Core;
 
 namespace Terminal.Commands;
 
 public abstract class CommandsContext : IDisposable
 {
+    internal ShellBase shell;
     protected UserCommandInfo Command => GetCurrentCommand().UserCommandInfo;
+    protected Shell Shell => (Shell)shell;
     internal string Name => GetType().Name;
     internal bool HasNonCommandMethods => GetAllActualMethods().Any(method => !method.HasAttribute<CommandAttribute>());
     internal bool HasPrivateCommandMethods => GetAllActualMethods().Any(method => method.HasAttribute<CommandAttribute>() && !method.IsPublic);

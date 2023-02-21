@@ -55,6 +55,12 @@ public abstract class ShellBase : IDisposable
         CheckCommandsContextsTypes(contexts);
 
         Contexts = contexts.CreateContexts().ToList();
+        
+        foreach (var ctx in Contexts)
+        {
+            ctx.shell = this;
+        }
+        
         Name = name;
         CommandMarker = commandMarker;
         ParamsMarker = paramsMarker;
@@ -70,6 +76,12 @@ public abstract class ShellBase : IDisposable
         CheckCommandsContextsTypes(contexts);
 
         Contexts = contexts.CreateContexts().ToList();
+        
+        foreach (var ctx in Contexts)
+        {
+            ctx.shell = this;
+        }
+        
         Name = name;
         CommandMarker = commandMarker;
         ParamsMarker = paramsMarker;

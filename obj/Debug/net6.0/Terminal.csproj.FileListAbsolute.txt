@@ -1,0 +1,12 @@
+F:\Projects\VSCode\C#\TerminalShell\obj\Debug\net6.0\Terminal.csproj.AssemblyReference.cache
+F:\Projects\VSCode\C#\TerminalShell\obj\Debug\net6.0\Terminal.GeneratedMSBuildEditorConfig.editorconfig
+F:\Projects\VSCode\C#\TerminalShell\obj\Debug\net6.0\Terminal.AssemblyInfoInputs.cache
+F:\Projects\VSCode\C#\TerminalShell\obj\Debug\net6.0\Terminal.AssemblyInfo.cs
+F:\Projects\VSCode\C#\TerminalShell\obj\Debug\net6.0\Terminal.csproj.CoreCompileInputs.cache
+F:\Projects\VSCode\C#\TerminalShell\bin\Debug\net6.0\Terminal.deps.json
+F:\Projects\VSCode\C#\TerminalShell\bin\Debug\net6.0\Terminal.dll
+F:\Projects\VSCode\C#\TerminalShell\bin\Debug\net6.0\Terminal.pdb
+F:\Projects\VSCode\C#\TerminalShell\obj\Debug\net6.0\Terminal.dll
+F:\Projects\VSCode\C#\TerminalShell\obj\Debug\net6.0\refint\Terminal.dll
+F:\Projects\VSCode\C#\TerminalShell\obj\Debug\net6.0\Terminal.pdb
+F:\Projects\VSCode\C#\TerminalShell\obj\Debug\net6.0\ref\Terminal.dll
