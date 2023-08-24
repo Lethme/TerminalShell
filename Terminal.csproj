@@ -5,18 +5,18 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <RootNamespace>Shell</RootNamespace>
-        <PackageVersion>2.1.0</PackageVersion>
+        <PackageVersion>2.1.1</PackageVersion>
         <Title>Shell</Title>
         <Authors>Ashe</Authors>
         <Description>Simple in use cmd-like console app interface library</Description>
-        <AssemblyVersion>2.1.0.0</AssemblyVersion>
-        <FileVersion>2.1.0.0</FileVersion>
+        <AssemblyVersion>2.1.1.0</AssemblyVersion>
+        <FileVersion>2.1.1.0</FileVersion>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <PackageId>TerminalShell</PackageId>
         <PackageLicenseUrl>https://www.gnu.org/licenses/gpl-3.0.html</PackageLicenseUrl>
         <RepositoryUrl>https://github.com/Lethme/TerminalShell</RepositoryUrl>
         <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-	<RepositoryUrl>https://github.com/Lethme/TerminalShell</RepositoryUrl>
+	    <RepositoryUrl>https://github.com/Lethme/TerminalShell</RepositoryUrl>
     	<RepositoryType>git</RepositoryType>
     	<PackageTags>console;shell;terminal;shell;cmd;interface</PackageTags>
     </PropertyGroup>

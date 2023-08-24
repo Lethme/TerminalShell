@@ -386,7 +386,7 @@ public abstract class ShellBase : IDisposable
             var currentParam = cmd.GetParam(param.Key);
             castedParamsDictionary.Add(currentParam!.Name, (currentParam.Aliases, new LinkedList<object>()));
 
-            var hasArrayParamType = currentParam.ParamsTypes.Last().IsArray;
+            var hasArrayParamType = currentParam.ParamsTypes.Any() && currentParam.ParamsTypes.Last().IsArray;
             
             if (
                 hasArrayParamType 
