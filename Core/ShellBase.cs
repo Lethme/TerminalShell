@@ -386,11 +386,17 @@ public abstract class ShellBase : IDisposable
             var currentParam = cmd.GetParam(param.Key);
             castedParamsDictionary.Add(currentParam!.Name, (currentParam.Aliases, new LinkedList<object>()));
 
-            if (param.Value.Count < currentParam.ParamsTypes.Count())
+            var hasArrayParamType = currentParam.ParamsTypes.Last().IsArray;
+            
+            if (
+                hasArrayParamType 
+                    ? param.Value.Count < currentParam.ParamsTypes.Count() - 1
+                    : param.Value.Count < currentParam.ParamsTypes.Count()
+            )
             {
                 throw new CommandValidatingException(
                     $"Values count mismatch: {param.Key}"
-                );   
+                );
             }
 
             var paramValuesTypes = currentParam.ParamsTypes.ToArray();
