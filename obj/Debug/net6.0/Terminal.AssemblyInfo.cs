@@ -13,11 +13,11 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Ashe")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyDescriptionAttribute("Simple in use cmd-like console app interface library")]
-[assembly: System.Reflection.AssemblyFileVersionAttribute("2.0.6.1")]
+[assembly: System.Reflection.AssemblyFileVersionAttribute("2.1.0.0")]
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
 [assembly: System.Reflection.AssemblyProductAttribute("Terminal")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Terminal")]
-[assembly: System.Reflection.AssemblyVersionAttribute("2.0.6.1")]
+[assembly: System.Reflection.AssemblyVersionAttribute("2.1.0.0")]
 [assembly: System.Reflection.AssemblyMetadataAttribute("RepositoryUrl", "https://github.com/Lethme/TerminalShell")]
 
 // Создано классом WriteCodeFragment MSBuild.

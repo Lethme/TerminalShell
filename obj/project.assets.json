@@ -12,7 +12,7 @@
     "G:\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
-    "version": "2.0.61",
+    "version": "2.1.0",
     "restore": {
       "projectUniqueName": "F:\\Projects\\VSCode\\C#\\TerminalShell\\Terminal.csproj",
       "projectName": "TerminalShell",
