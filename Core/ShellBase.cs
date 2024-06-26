@@ -513,8 +513,22 @@ public abstract class ShellBase : IDisposable
             {
                 var command = Enter();
                 var result = Invoke(command);
+
+                if (result is Task task)
+                {
+                    task.Wait();
+                    
+                    if (task is Task<object?> taskWithResult)
+                    {
+                        result = taskWithResult.Result;
+                    }
+                    else
+                    {
+                        result = null;
+                    }
+                }
                 
-                 if (result != null) Console.WriteLine($"{result}\n");
+                if (result != null) Console.WriteLine($"{result}\n");
             });
 
             GC.Collect();
